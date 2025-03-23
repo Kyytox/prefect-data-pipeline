@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "pandas": "pandas=\">=2.2.3,<3\"",
+    "numpy": "numpy=\">=2.2.4,<3\"",
+    "pyarrow": "pyarrow=\">=19.0,<20\"",
+    "psycopg2": "psycopg2=\"*\"",
+    "sqlalchemy": "sqlalchemy=\">=2.0.0,<3\"",
+    "prefect": "prefect=\">=3.2.14,<4\"",
+    "streamlit": "streamlit=\">=1.43.2,<2\""
+  }
+}
