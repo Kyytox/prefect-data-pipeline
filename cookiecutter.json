@@ -6,7 +6,7 @@
   "author": "Your name",
   "author_email": "Your@email.com",
   "root_domain": "<<yourdomain.com>>",
-  "time_zone": "Europe/Vienna",
+  "time_zone": "Europe/Paris",
   "state_path": "{{ '.' | abspath }}/{{ cookiecutter.project_slug }}-z_state",
 
   "_extensions": ["jinja2_ospath.extensions.OSPathExtension"]
