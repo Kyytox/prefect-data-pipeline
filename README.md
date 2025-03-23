@@ -1,14 +1,14 @@
-# Architecture for Data Pipelines
+# Templates for Data Pipelines
 
-template of architecture for data pipelines, with some open-sources tools 
+Templates for data pipelines projects using, with some open-sources tools
 
-Inspiration from project: https://github.com/l-mds/local-data-stack/tree/main
+Inspiration from project: [local-data-stack](https://github.com/l-mds/local-data-stack/tree/main)
 
 ## Prerequisites
 
 - **[Python](https://www.python.org/downloads/) >= 3.9**
 
-- **[pixi](https://pixi.sh/v0.27.1/)**
+- **[pixi](https://pixi.sh/dev/)**
 
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
@@ -21,13 +21,18 @@ curl -fsSL https://pixi.sh/install.sh | bash
 pip install pipx
 pipx install cookiecutter
 
-
 # If pipx is not an option,
 # you can install cookiecutter in your Python user directory.
 python -m pip install --user cookiecutter
 ```
 
 ## Usage
+
+Get the templates:
+
+```bash
+git clone https://github.com/Kyytox/archi-data-pipeline.git
+```
 
 Create a new project using script:
 
