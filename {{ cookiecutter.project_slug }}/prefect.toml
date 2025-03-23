@@ -1,0 +1,3 @@
+[logging]
+level = "DEBUG"
+config_path = "{{ cookiecutter.project_slug }}/logging.yaml"
