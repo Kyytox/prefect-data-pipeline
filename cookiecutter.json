@@ -7,7 +7,7 @@
   "author_email": "Your@email.com",
   "root_domain": "<<yourdomain.com>>",
   "time_zone": "Europe/Paris",
-  "state_path": "{{ '.' | abspath }}/{{ cookiecutter.project_slug }}-z_state",
+  "state_path": "{{ '.' | abspath }}/{{ cookiecutter.project_slug }}",
 
   "_extensions": ["jinja2_ospath.extensions.OSPathExtension"]
 }
