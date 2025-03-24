@@ -2,19 +2,19 @@
 
 Templates for data pipelines projects using, with some open-sources tools
 
-Inspiration from project: [local-data-stack](https://github.com/l-mds/local-data-stack/tree/main)
+Inspiration from project: **[local-data-stack](https://github.com/l-mds/local-data-stack/tree/main)**
 
 ## Prerequisites
 
-- **[Python](https://www.python.org/downloads/) >= 3.9**
+- [Python](https://www.python.org/downloads/) >= 3.9
 
-- **[pixi](https://pixi.sh/dev/)**
+- [pixi](https://pixi.sh/dev/)
 
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
 ```
 
-- **[cookiecutter](https://github.com/cookiecutter/cookiecutter)**
+- [cookiecutter](https://github.com/cookiecutter/cookiecutter)
 
 ```bash
 # pipx is strongly recommended.
@@ -50,4 +50,22 @@ Install the dependencies:
 
 ```bash
 pixi install
+```
+
+Activate the virtual environment:
+
+```bash
+pixi shell
+```
+
+Launch Prefect:
+
+```bash
+prefect server start
+```
+
+Launch Pipeline:
+
+```bash
+python main.py
 ```
