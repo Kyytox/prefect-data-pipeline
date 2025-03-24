@@ -3,7 +3,7 @@
     "id": 1,
     "name": "pd-parq",
     "description": "Templates for project with Pandas",
-    "dependencies": ["pandas", "numpy"]
+    "dependencies": ["pandas", "numpy", "fastparquet"]
   },
   {
     "id": 2,
