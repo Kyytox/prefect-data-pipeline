@@ -1,65 +1,119 @@
-from prefect import flow, task
-from prefect.logging import get_run_logger
+import pandas as pd
 
-from prefect.states import Completed
+# Prefect
+from prefect import task
 
 # Paths
-from core.config.path import PATH_DATA_SOURCE, PATH_DATA_RAW
+from core.config.path import URL_API, PATH_DATA_RAW, PATH_CONFIG_SCHEMA
 
 # Utils
 from core.libs.utils import (
-    load_csv,
-    save_parquet,
+    get_data_api,
     upd_data_artifact,
-    save_artifact,
+    get_data_schema,
+    save_data,
+    update_columns_types,
 )
 
 
-@flow(
-    name="flow_ingestion",
-    flow_run_name="flow-ingestion",
-    log_prints=True,
-    description="Ingest data from data/sources",
+def get_nested_value(item, path, default=None):
+    """
+    Recovers a value from a dictionary by following a point path.
+
+    Args:
+        item (dict): Dict from which to extract the value
+        path (str): Path to the value, separated by points
+        default: Default value to return if the path does not exist
+
+    Returns:
+        The value of the path in the dictionary or the default value
+    """
+    keys = path.split(".")
+    current = item
+
+    try:
+        for key in keys:
+            if current is None:
+                return default
+            if isinstance(current, dict):
+                current = current.get(key, None)
+            else:
+                return default
+        return current
+    except (KeyError, TypeError, AttributeError):
+        return default
+
+
+@task(
+    name="filter_columns",
+    task_run_name="filter-columns",
+    description="Filter columns from data",
 )
-def flow_ingestion():
+def filter_columns(json_data, data_schema):
     """
-    Flow to ingest data from data/sources
+    Get necessary columns from the data
+
+    Args:
+        data (dict): Data to filter
+        columns (list): List of columns to keep
     """
 
-    # Get logger
-    logger = get_run_logger()
+    # Create a dictionary to map link
+    corresp_dict = {col["name"]: col["link"] for col in data_schema["columns"]}
 
-    file_src = f"{PATH_DATA_SOURCE}/github_repo.csv"
-    file_dest = f"{PATH_DATA_RAW}/github_repo.parquet"
+    data = []
 
-    # Load data
-    df = load_csv(
-        file_path=file_src,
-        sep=",",
-        encoding="utf-8",
-        header=0,
-    )
+    # Loop through the JSON data and extract the necessary fields
+    for item in json_data:
+        filtered_item = {}
+        for new_name, old_name in corresp_dict.items():
+            # Extract the value from the nested structure
+            filtered_item[new_name] = get_nested_value(item, old_name)
 
-    # display infos
-    logger.info(f"DataFrame shape: {df.shape}")
-    logger.info(f"DataFrame columns: {df.info()}")
-    logger.info(f"DataFrame head: {df.head()}")
+        data.append(filtered_item)
 
-    # Update artifact
-    upd_data_artifact(
-        info=f"Ingestion data from {file_src}",
-        data=f"{df.shape[0]} rows and {df.shape[1]} columns",
-    )
+    return pd.DataFrame(data)
+
+
+@task(
+    name="task_ingestion",
+    task_run_name="task-ingestion",
+    description="Ingest data from API",
+)
+def task_ingestion():
+    """
+    Task to ingest data from API
+
+    - Get data from API
+    - Retrieve necessary columns
+    - Update columns types
+    - Save data to parquet file
+    """
+
+    file_src = f"{URL_API}"
+    file_dest = f"{PATH_DATA_RAW}/rockets_launches.parquet"
+
+    # Get schema of data
+    data_schema = get_data_schema(file_path=PATH_CONFIG_SCHEMA, table_name="raw")
+
+    # Load data -> returns a JSON file
+    json_data = get_data_api(file_src)
+
+    # Collect necessary columns
+    df = filter_columns(json_data, data_schema)
+
+    # Update columns types
+    df = update_columns_types(df, data_schema)
 
     # Save data
-    save_parquet(
+    save_data(
         df=df,
         file_path=file_dest,
         index=False,
     )
 
-    # Save artifact
-    save_artifact(key_name="flow-ingestion-artifact")
-
-    # Return the flow state
-    return Completed(message="Flow ingestion completed successfully")
+    # Update artifact
+    upd_data_artifact(
+        info=f"Ingestion data from {file_src}",
+        data=f"{len(df)} rows and {len(df.columns)} columns",
+    )
