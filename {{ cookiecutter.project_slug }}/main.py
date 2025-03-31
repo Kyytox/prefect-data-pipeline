@@ -1,23 +1,8 @@
-import os
-
-
 # Flows
-from core.processing.ingestion import flow_ingestion
-
-# from core.processing.transformation import flow_transformation
-# from core.processing.loading import flow_loading
-
-
-def main():
-    """
-    Main function to run the flows
-    """
-
-    # Run the flow
-    flow_ingestion()
-    # flow_transformation()
-    # flow_loading()
+from core.processing.orchestration import flow_rockets_launch
 
 
 if __name__ == "__main__":
-    main()
+
+    # Run the flow
+    flow_rockets_launch()
