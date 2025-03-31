@@ -1,3 +1,4 @@
 [logging]
 level = "INFO"
 config_path = "{{ cookiecutter.state_path }}/logging.yml"
+log_prints = true
