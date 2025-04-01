@@ -3,18 +3,29 @@
     "id": 1,
     "name": "pd-parq",
     "description": "Templates for project with Pandas",
-    "dependencies": ["pandas", "numpy", "fastparquet"]
+    "dependencies": [
+      "pandas",
+      "numpy",
+      "fastparquet"
+    ]
   },
   {
     "id": 2,
     "name": "py-parq",
     "description": "Templates for project with Pyarrow",
-    "dependencies": ["pyarrow"]
+    "dependencies": [
+      "pyarrow"
+    ]
   },
   {
     "id": 3,
     "name": "pd-postgres",
     "description": "Templates for project with Pandas and Postgres",
-    "dependencies": ["pandas", "numpy", "psycopg2", "sqlalchemy"]
+    "dependencies": [
+      "pandas",
+      "numpy",
+      "psycopg2",
+      "sqlalchemy"
+    ]
   }
 ]

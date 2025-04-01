@@ -126,9 +126,9 @@ def get_selected_template(dict_templates, num_template):
 if __name__ == "__main__":
 
     print("")
-    print("============================================")
-    print("          Create a new project")
-    print("============================================")
+    print("=" * 50)
+    print("  \033[1;33mWelcome to the Cookiecutter Template Creator !\033[00m")
+    print("=" * 50)
 
     # get os path
     PATH = os.path.dirname(os.path.abspath(__file__))
@@ -148,12 +148,11 @@ if __name__ == "__main__":
         print(
             f"  \033[1;35m{template['id']}.\033[00m\033[1;33m{template['name']} \033[00m"
         )
-        print(f"  ---------------------------")
+        print(f"  -----------------")
         print(f"  Description:")
-        print(f"    {template['description']}")
-        print("")
-        print(f"  Dependencies:")
-        print(f"    {template['dependencies']}")
+        print(f"  \033[1;36mDescription :\033[00m {template['description']}")
+        print(f"  \033[1;36mDependencies :\033[00m {template['dependencies']}")
+        print("  -----------------------------------------------------")
         print("")
 
     # get response
@@ -177,7 +176,7 @@ if __name__ == "__main__":
     print("Configure the project: ")
     print("")
     NEW_PATH = cookiecutter(
-        PATH,
+        os.path.join(PATH, f"template_{num_template}"),
         output_dir=os.path.dirname(PATH),
     )
 
@@ -196,7 +195,7 @@ if __name__ == "__main__":
         f.write(new_pyproject)
 
     print("")
-    print("================================================")
-    print(f"        Project - {NEW_PATH.split('/')[-1]} - Created.")
-    print(f"        {NEW_PATH}")
-    print("================================================")
+    print("=" * 50)
+    print(f"    \033[1;33mProject - {NEW_PATH.split('/')[-1]} - Created.\033[00m")
+    print(f"    \033[1;33m{NEW_PATH}\033[00m")
+    print("=" * 50)
