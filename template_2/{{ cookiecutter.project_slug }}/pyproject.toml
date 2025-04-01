@@ -1,0 +1,28 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "1.0.0"
+description = "{{ cookiecutter.project_name }}"
+authors = [{ name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" }]
+requires-python = "== 3.12"
+
+
+[tool.pixi.workspace]
+platforms = ["linux-64", "osx-arm64", "win-64", "linux-aarch64"]
+channels = ["conda-forge"]
+
+[tool.pixi.environments]
+default = {features = [], solve-group = "default"}
+
+[tool.pixi.dependencies]
+pyyaml = "*"
+questionary = "*"
+prefect=">=3.2.14,<4"
+
+# [tool.pixi.feature.test.dependencies]
+# pytest = "~=7.4.0"
+
+# [tool.pixi.feature.dev.dependencies]
+# black = "~=23.9.1"
+
+[tool.pixi.tasks]
+setup = "python scripts/setup_env.py"
