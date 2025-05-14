@@ -1,27 +1,29 @@
 [
   {
     "id": 1,
-    "name": "pd-parq",
-    "description": "Templates for project with Pandas",
+    "name": "archi_custom",
+    "description": "Templates for Prefect project with custom dependencies",
     "dependencies": [
-      "pandas",
-      "numpy",
-      "fastparquet"
+      "You chose the dependencies"
     ]
   },
   {
     "id": 2,
-    "name": "py-parq",
-    "description": "Templates for project with Pyarrow",
+    "name": "archi_pyarrow",
+    "description": "Templates for Prefect project with Pyarrow",
     "dependencies": [
       "pyarrow"
     ]
   },
   {
     "id": 3,
-    "name": "pd-postgres",
-    "description": "Templates for project with Pandas and Postgres",
+    "name": "archi_postgres_dbt",
+    "description": "Templates for Prefect project with Pyarrow, Postgres, and DBT",
     "dependencies": [
+      "dbt-core",
+      "dbt-postgres",
+      "prefect-dbt",
+      "pyarrow",
       "pandas",
       "numpy",
       "psycopg2",
