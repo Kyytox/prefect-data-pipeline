@@ -1,0 +1,17 @@
+{
+  "project_name": "azert",
+  "organization": "myorg",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "project_slug_pixi": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "database_name": "db_{{ cookiecutter.project_slug }}",
+  "database_user": "postgres",
+  "database_password": "root",
+  "author": "Your name",
+  "author_email": "Your@email.com",
+  "root_domain": "<<yourdomain.com>>",
+  "time_zone": "Europe/Paris",
+  "state_path": "{{ '.' | abspath }}/{{ cookiecutter.project_slug }}",
+  "_extensions": [
+    "jinja2_ospath.extensions.OSPathExtension"
+  ]
+}

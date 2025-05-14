@@ -1,0 +1,11 @@
+"{{ cookiecutter.project_slug }}": # Ce cookiecutter reste pour le nom du projet
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{% raw %}{{ env_var('DB_HOST', 'localhost') }}{% endraw %}"
+      user: "{% raw %}{{ env_var('DB_USER', 'myuser') }}{% endraw %}"
+      password: "{% raw %}{{ env_var('DBT_ENV_SECRET_DB_PASSWORD', 'mypassword') }}{% endraw %}"
+      dbname: "{% raw %}{{ env_var('DB_NAME', 'mydatabase') }}{% endraw %}"
+      port: "{% raw %}{{ env_var('DB_PORT', 5432) }}{% endraw %}"
+      schema: "{% raw %}{{ env_var('DB_SCHEMA', 'public') }}{% endraw %}"

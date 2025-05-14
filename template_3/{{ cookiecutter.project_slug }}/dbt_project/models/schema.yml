@@ -1,0 +1,41 @@
+version: 2
+models:
+  - name: stg_rockets
+    description: "Staging table for raw rockets launches data"
+    columns:
+      - name: launch_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: launch_date
+        description: "Date of the launch"
+      - name: name
+        description: "Name of the entity"
+      - name: status
+        description: "Status of the launch"
+      - name: launch_service_provider
+        description: "Provider of the launch service"
+      - name: launch_site
+        description: "Site of the launch"
+      - name: country
+        description: "Country of the launch"
+      - name: rocket
+        description: "Name of the launcher"
+      - name: mission
+        description: "Name of the mission"
+      - name: mission_type
+        description: "Type of the mission"
+
+  - name: mart_rocket_launches_by_country
+    description: "Aggregated data of rocket launches by country"
+    columns:
+      - name: country
+        description: "Country of the launch"
+        data_tests:
+          - unique
+          - not_null
+      - name: nb_launches
+        description: "Number of launches"
+      - name: nb_sucess
+        description: "Number of successful launches"
