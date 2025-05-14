@@ -2,11 +2,8 @@
 from prefect import flow
 from prefect.logging import get_run_logger
 
-
 # Utils
-from core.libs.utils import (
-    save_artifact,
-)
+from core.libs.utils import save_artifact
 
 # Tasks
 from core.processing.ingestion import task_ingestion
@@ -14,12 +11,12 @@ from core.processing.transform import task_transform
 
 
 @flow(
-    name="flow_rockets_launch",
-    flow_run_name="flow-rockets-launch",
+    name="my_test_flow",
+    flow_run_name="my-test-flow",
     log_prints=True,
     description="Flow to orchestrate the ingestion, transformation, and loading of data",
 )
-def flow_rockets_launch():
+def my_test_flow():
     """
     Flow to orchestrate the ingestion, transformation, and loading of data
     """
@@ -28,7 +25,7 @@ def flow_rockets_launch():
     logger = get_run_logger()
 
     logger.info("-" * 50)
-    logger.info("FLOW ROCKETS LAUNCH STARTED")
+    logger.info("FLOW TEST START")
     logger.info("-" * 50)
 
     # Run the ingestion flow
@@ -38,8 +35,8 @@ def flow_rockets_launch():
     task_transform()
 
     # Save the artifact
-    save_artifact(key_name="flow-rockets-launch-artifact")
+    save_artifact(key_name="my_test_flow")
 
     logger.info("-" * 50)
-    logger.info("FLOW ROCKETS LAUNCH COMPLETED")
+    logger.info("FLOW TEST END")
     logger.info("-" * 50)

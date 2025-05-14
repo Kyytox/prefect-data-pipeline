@@ -16,7 +16,7 @@ default = {features = [], solve-group = "default"}
 [tool.pixi.dependencies]
 pyyaml = "*"
 questionary = "*"
-prefect=">=3.2.14,<4"
+prefect=">=3.3.0,<4"
 
 # [tool.pixi.feature.test.dependencies]
 # pytest = "~=7.4.0"
