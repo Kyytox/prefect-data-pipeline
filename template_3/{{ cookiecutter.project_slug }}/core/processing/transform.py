@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 # Prefect
 from prefect import task
 from prefect.logging import get_run_logger
@@ -8,6 +11,8 @@ from core.config.path import PATH_CONFIG_SCHEMA
 
 # Utils
 from core.libs.utils import upd_data_artifact
+
+load_dotenv()
 
 
 @task(
@@ -22,6 +27,11 @@ def task_transform():
     This task runs DBT models to transform data in PostgreSQL
     """
     logger = get_run_logger()
+
+    # Load environment variables from .env file
+    os.environ["DB_USER"] = os.getenv("DB_USER")
+    os.environ["DBT_ENV_SECRET_DB_PASSWORD"] = os.getenv("DBT_ENV_SECRET_DB_PASSWORD")
+    os.environ["DB_NAME"] = os.getenv("DB_NAME")
 
     # Run DBT models to transform data
     try:
