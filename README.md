@@ -49,13 +49,7 @@ cd <project_name>
 Install the dependencies:
 
 ```bash
-pixi install
-```
-
-Activate the virtual environment:
-
-```bash
-pixi shell
+bash setup/setup.sh
 ```
 
 Launch Prefect:
