@@ -18,6 +18,7 @@ pyyaml = "*"
 questionary = "*"
 prefect=">=3.3.0,<4"
 pyarrow=">=19.0,<20"
+numpy=">=2.2.4,<3"
 
 # [tool.pixi.feature.test.dependencies]
 # pytest = "~=7.4.0"
