@@ -172,25 +172,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-template_1 copy/cookiecutter.json
-template_1 copy/{{ cookiecutter.project_slug }}/.gitignore
-template_1 copy/{{ cookiecutter.project_slug }}/main.py
-template_1 copy/{{ cookiecutter.project_slug }}/Makefile
-template_1 copy/{{ cookiecutter.project_slug }}/prefect.toml
-template_1 copy/{{ cookiecutter.project_slug }}/pyproject.toml
-template_1 copy/{{ cookiecutter.project_slug }}/README.md
-template_1 copy/{{ cookiecutter.project_slug }}/.github/ISSUE_TEMPLATE/user-story.md
-template_1 copy/{{ cookiecutter.project_slug }}/core/__init__.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/config/__init__.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/config/path.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/config/schemas.yaml
-template_1 copy/{{ cookiecutter.project_slug }}/core/libs/__init__.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/libs/utils.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/processing/__init__.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/processing/ingestion.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/processing/orchestration.py
-template_1 copy/{{ cookiecutter.project_slug }}/core/processing/transform.py
-template_1 copy/{{ cookiecutter.project_slug }}/documentation/secops/add-key.md
-template_1 copy/{{ cookiecutter.project_slug }}/prefect_config/deploy.sh
-template_1 copy/{{ cookiecutter.project_slug }}/prefect_config/logging.yml
-template_1 copy/{{ cookiecutter.project_slug }}/prefect_config/prefect.yaml
