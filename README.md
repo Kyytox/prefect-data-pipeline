@@ -31,6 +31,9 @@ pipx install cookiecutter
 python -m pip install --user cookiecutter
 ```
 
+</br>
+</br>
+
 ## Usage
 
 Get the templates:
