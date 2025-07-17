@@ -1,8 +1,11 @@
-# Templates for Data Pipelines
+# Prefect Templates for Data Pipelines
 
-Templates for data pipelines projects using, with some open-sources tools
+Templates for data pipelines projects using some open-sources tools
 
-Inspiration from project: **[local-data-stack](https://github.com/l-mds/local-data-stack/tree/main)**
+</br>
+
+![](/assets/prefect_data_pipeline_img_archi.png "Titre de l'image")
+
 
 ## Prerequisites
 
@@ -13,6 +16,8 @@ Inspiration from project: **[local-data-stack](https://github.com/l-mds/local-da
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
 ```
+
+</br>
 
 - [cookiecutter](https://github.com/cookiecutter/cookiecutter)
 
@@ -37,7 +42,7 @@ git clone https://github.com/Kyytox/archi-data-pipeline.git
 Create a new project using script:
 
 ```bash
-python archi-data-pipeline/init_project.py
+python prefect-data-pipeline/init_project.py 
 ```
 
 Go to the project directory:
@@ -46,7 +51,8 @@ Go to the project directory:
 cd <project_name>
 ```
 
-Install the dependencies:
+
+Setup the project:
 
 ```bash
 bash setup/setup.sh
@@ -61,5 +67,15 @@ prefect server start
 Launch Pipeline:
 
 ```bash
-python main.py
+# In a new terminal
+cd <project_name> && pixi shell
+sh prefect/deploy.sh
 ```
+
+> [!WARNING]  
+> The Pipeline running every minute.
+
+> [!NOTE]
+> For **Template_2** : You can see the final result in data/processed/rockets_launches_stats.parquet file.
+> 
+> For **Template_3** : You can see the final result in Postgres database in mart_rocket_launches_by_country table.
