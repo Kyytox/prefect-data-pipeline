@@ -1,4 +1,3 @@
-import pandas as pd
 import pyarrow as pa
 
 # Prefect
@@ -93,11 +92,13 @@ def task_ingestion():
     """
 
     file_src = f"{URL_API}"
-    table_name = "raw_rockets"
     schema_name = "public"
+    table_name = "raw_rockets"
 
     # Get schema of data
-    data_schema = get_data_schema(file_path=PATH_CONFIG_SCHEMA, table_name="raw")
+    data_schema = get_data_schema(
+        file_path=PATH_CONFIG_SCHEMA, table_name="raw_rockets"
+    )
 
     # Load data -> returns a JSON file
     json_data = get_data_api(file_src)
@@ -113,7 +114,7 @@ def task_ingestion():
 
     # Save data to PostgreSQL
     save_to_postgres(
-        df=df, table_name=table_name, schema=schema_name, if_exists="replace"
+        df=df, table_name=table_name, schema=schema_name, if_exists="append"
     )
 
     # Update artifact

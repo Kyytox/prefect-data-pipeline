@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+
 # echo "Setting up environment variables..."
 # if [ -f ./.env ]; then
 #     echo $DB_USER
@@ -12,8 +21,9 @@
 #     echo "Warning: .env file not found. Using default environment."
 # fi
 
-# echo
-echo "Installing dependencies with Pixi..."
+echo
+echo -e "${YELLOW}Installing dependencies with Pixi...${NC}"
+echo
 
 # Check if pixi is installed
 if ! command -v pixi &> /dev/null; then
@@ -24,8 +34,12 @@ fi
 
 # Install dependencies using pixicd ..
 pixi install
-echo "Dependencies installed successfully."
-echo
 
+# Activate the pixi environment
+echo
+echo -e "${GREEN}Dependencies installed successfully and pixi shell started!${NC}"
 echo "Starting pixi shell (use 'exit' to return to normal shell)..."
 pixi shell
+
+
+

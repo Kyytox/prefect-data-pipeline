@@ -13,5 +13,8 @@
   "state_path": "{{ '.' | abspath }}/{{ cookiecutter.project_slug }}",
   "_extensions": [
     "jinja2_ospath.extensions.OSPathExtension"
+  ],
+  "_copy_without_render": [
+    "dbt_project/models/*"
   ]
 }

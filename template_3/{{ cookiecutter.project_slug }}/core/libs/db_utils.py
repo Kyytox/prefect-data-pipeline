@@ -4,7 +4,6 @@ Database utilities for PostgreSQL connection and operations
 
 import os
 from sqlalchemy import create_engine
-import pandas as pd
 from prefect.blocks.system import Secret
 
 
@@ -41,7 +40,7 @@ def get_db_engine():
     return create_engine(conn_string)
 
 
-def save_to_postgres(df, table_name, schema="raw", if_exists="replace"):
+def save_to_postgres(df, table_name, schema="raw", if_exists="append"):
     """
     Save data to PostgreSQL database
 
@@ -55,26 +54,3 @@ def save_to_postgres(df, table_name, schema="raw", if_exists="replace"):
     df.to_sql(
         name=table_name, con=engine, schema=schema, if_exists=if_exists, index=False
     )
-
-
-def load_from_postgres(table_name, schema="raw", columns=None):
-    """
-    Load data from PostgreSQL database
-
-    Args:
-        table_name (str): Table name
-        schema (str): Schema name
-        columns (list): List of columns to retrieve
-
-    Returns:
-        pd.DataFrame: Data from PostgreSQL
-    """
-    engine = get_db_engine()
-
-    if columns:
-        cols_str = ", ".join(columns)
-        query = f"SELECT {cols_str} FROM {schema}.{table_name}"
-    else:
-        query = f"SELECT * FROM {schema}.{table_name}"
-
-    return pd.read_sql(query, engine)

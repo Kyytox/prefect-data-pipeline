@@ -2,13 +2,13 @@
 
 datamodel:
   tables:
-    - name: raw
+    - name: raw_rockets
       description: "Table containing the raw data"
       columns:
-        - name: id
-          type: string
-          link: "id"
-          description: "Unique identifier for each record"
+        # - name: id
+        #   type: string
+        #   link: "id"
+        #   description: "Unique identifier for each record"
         - name: launch_date
           type: datetime
           link: "net"
@@ -45,15 +45,3 @@ datamodel:
           type: string
           link: "mission.type"
           description: "Type of the mission"
-    - name: processed
-      description: "Table containing the processed data"
-      columns:
-        - name: country
-          type: string
-          description: "Country of the launch"
-        - name: nb_launches
-          type: integer
-          description: "Number of launches"
-        - name: nb_sucess
-          type: integer
-          description: "Number of successful launches"

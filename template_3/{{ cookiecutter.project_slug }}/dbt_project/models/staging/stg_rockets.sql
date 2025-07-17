@@ -1,7 +1,3 @@
-{% raw %}{{ config(materialized='view', schema="staging") }}{% endraw %}
+{{ config(materialized='view') }}
 
-WITH source_data AS (
-    SELECT * FROM raw_rockets
-)
-
-SELECT * FROM source_data
+SELECT * FROM public.raw_rockets

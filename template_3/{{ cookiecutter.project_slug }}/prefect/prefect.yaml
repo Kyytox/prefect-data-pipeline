@@ -1,0 +1,25 @@
+# generic metadata
+prefect-version: null
+name: null
+
+# preparation steps
+build: null
+push: null
+
+# runtime steps
+pull: null
+
+definitions:
+  schedules:
+    every_minute: &every_1_minutes
+      interval: 60
+
+# deployment configurations
+deployments:
+  - name: deployment-1
+    description: "Deployment for the rockets launch flow"
+    entrypoint: core/processing/orchestration.py:flow_rockets_launch
+    schedule: *every_1_minutes
+    work_pool:
+      name: main-work-pool
+      work_queue_name: primary-queue

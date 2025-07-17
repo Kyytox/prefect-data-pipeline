@@ -1,9 +1,10 @@
 version: 2
+
 models:
   - name: stg_rockets
     description: "Staging table for raw rockets launches data"
     columns:
-      - name: launch_id
+      - name: id
         description: "The primary key for this table"
         data_tests:
           - unique

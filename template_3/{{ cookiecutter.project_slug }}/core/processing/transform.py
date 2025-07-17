@@ -6,9 +6,6 @@ from prefect import task
 from prefect.logging import get_run_logger
 from prefect_dbt.cli.commands import DbtCoreOperation
 
-# Paths
-from core.config.path import PATH_CONFIG_SCHEMA
-
 # Utils
 from core.libs.utils import upd_data_artifact
 
