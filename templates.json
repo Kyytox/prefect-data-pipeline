@@ -12,7 +12,8 @@
     "name": "archi_pyarrow",
     "description": "Templates for Prefect project with Pyarrow",
     "dependencies": [
-      "pyarrow"
+      "pyarrow",
+      "numpy"
     ]
   },
   {
