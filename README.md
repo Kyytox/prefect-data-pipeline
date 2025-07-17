@@ -79,6 +79,6 @@ sh prefect/deploy.sh
 > The Pipeline running every minute.
 
 > [!NOTE]
-> For **Template_2** : You can see the final result in data/processed/rockets_launches_stats.parquet file.
+> For **Template_2** : You can see the final result in `data/processed/rockets_launches_stats.parquet` file.
 > 
-> For **Template_3** : You can see the final result in Postgres database in mart_rocket_launches_by_country table.
+> For **Template_3** : You can see the final result in Postgres database in `mart_rocket_launches_by_country` table.
