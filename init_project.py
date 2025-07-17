@@ -72,9 +72,6 @@ if __name__ == "__main__":
     # get templates choice
     dict_templates = json.loads(open(os.path.join(PATH, "templates.json"), "r").read())
 
-    # get list of libs
-    json_libs = json.loads(open(os.path.join(PATH, "dependencies.json"), "r").read())
-
     # Choose between the templates
     print("")
     print("Choose a template:")
