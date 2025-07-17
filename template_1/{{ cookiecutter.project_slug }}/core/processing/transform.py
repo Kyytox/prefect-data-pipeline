@@ -1,11 +1,7 @@
-import pandas as pd
-
 # Prefect
 from prefect import task
 from prefect.logging import get_run_logger
 
-# Paths
-from core.config.path import PATH
 
 # Utils
 from core.libs.utils import upd_data_artifact

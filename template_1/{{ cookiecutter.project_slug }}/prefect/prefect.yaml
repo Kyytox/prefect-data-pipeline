@@ -11,13 +11,13 @@ pull: null
 
 definitions:
   schedules:
-    every_ten_minutes: &every_1_minutes
+    every_minute: &every_1_minutes
       interval: 60
 
 # deployment configurations
 deployments:
   - name: deployment-1
-    description: null
+    description: "Deployment for the rockets launch flow"
     entrypoint: core/processing/orchestration.py:my_test_flow
     schedule: *every_1_minutes
     work_pool:

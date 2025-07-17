@@ -35,7 +35,7 @@ def my_test_flow():
     task_transform()
 
     # Save the artifact
-    save_artifact(key_name="my_test_flow")
+    save_artifact(key_name="my-test-flow")
 
     logger.info("-" * 50)
     logger.info("FLOW TEST END")
